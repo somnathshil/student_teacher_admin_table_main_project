@@ -80,8 +80,7 @@ $_SESSION['oldImage'] = $result['teacher_image'];
 
           <img src="<?php echo $result['teacher_image']; ?>" width="100" height="100" ><br>
 		<label for="image">Image :</label><br>
-		<input type="file" name="image" class="input imageInput" onchange="imageValid()"><br>
-		<div class="imageErrDiv" style="width:90%"></div><br>
+		<input type="file" name="image" class="input" ><br>
 
 		<button class="formbtn">submit</button>
 		
@@ -226,37 +225,13 @@ emailValid();
 genderValid();
 
 
-	function imageValid(){
-		const fileInput = document.querySelector(".imageInput");
-		const errDiv = document.querySelector(".imageErrDiv");
-
-		const file = fileInput.files[0];
-
-			if(!file){
-				   errDiv.innerHTML = "<p>You must choose an image</p>";
-	             errDiv.classList.add("errMsg");
-			}else{
-				      errDiv.innerHTML = "";
-	              errDiv.classList.remove("errMsg");
-	              
-			}        
-		checkAllValid();
-	}
-imageValid();
-
-
-
-
-
 function checkAllValid() {
   const nameValid = document.querySelector(".nameInput").classList.contains("sucrssInput");
   const emailValid = document.querySelector(".emailInput").classList.contains("sucrssInput");
   const phoneValid = document.querySelector(".phoneInput").classList.contains("sucrssInput");
   const genderChecked = document.querySelector('input[name="gender"]:checked') !== null;
-  
-  const imageChosen = document.querySelector(".imageInput").files.length > 0;
 
-  const allValid = nameValid && emailValid && phoneValid && genderChecked  && imageChosen;
+  const allValid = nameValid && emailValid && phoneValid && genderChecked;
 
   document.querySelector(".formbtn").disabled = !allValid;
 }

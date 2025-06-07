@@ -43,7 +43,19 @@ $data_for_all_st = $conn->query($sql_for_all_st);
     font-size: 16px;
   }
 
+            #myTable2 thead tr {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
   #myTable thead th {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  #myTable2 thead th {
     padding: 10px;
     border: 1px solid #ccc;
   }
@@ -61,7 +73,8 @@ $data_for_all_st = $conn->query($sql_for_all_st);
 
       <h2 style="text-align: center;background-color: #bd4a11;height: 2rem;width: 45%;margin: auto;margin-bottom: 2rem;">Teacher <?php echo $res['teacher_name']; ?></h2> 
 
-      <table border="1px" align="center">
+      <table border="1px" align="center" id="myTable" class="display">
+          <thead>
            <tr>
               <th >Teacher's Name</th>
               <th >Teacher's Email</th>
@@ -71,6 +84,8 @@ $data_for_all_st = $conn->query($sql_for_all_st);
               <th > Subjects </th>
               <th > Actions </th>
           </tr> 
+          </thead>
+          <tbody>
           <tr>
               <td><?php echo $res['teacher_name']; ?></td>
               <td><?php echo $res['teacher_email']; ?></td>
@@ -109,11 +124,12 @@ $data_for_all_st = $conn->query($sql_for_all_st);
               </td>
           
           </tr>
+          </tbody>
       </table>
       <br><br>
 
 <h2 style="text-align: center;background-color: #bd4a11;height: 2rem;width: 45%;margin: auto;margin-bottom: 2rem;">Student Details</h2>
-   <table border="1px" id="myTable" class="display">
+   <table border="1px"  id="myTable2" class="display">
     
     <thead>
     	<tr>
@@ -185,6 +201,7 @@ $data_for_all_st = $conn->query($sql_for_all_st);
      <script>
   $(document).ready(function() {
     $('#myTable').DataTable();
+    $('#myTable2').DataTable();
   });
 </script>
 </body>
